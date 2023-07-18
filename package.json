@@ -1,5 +1,28 @@
 {
+  "name": "api-breaknew-server",
+  "description": "back-end do projeto breaknews",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabricio54/API-BREAKNEW-SERVER.git"
+  },
+  "author": "Fabricio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabricio54/API-BREAKNEW-SERVER/issues"
+  },
+  "homepage": "https://github.com/fabricio54/API-BREAKNEW-SERVER#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.3.4",
+    "nodemon": "^3.0.1"
   }
 }

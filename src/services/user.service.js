@@ -6,10 +6,30 @@ const create = (body) => User.create(body);
 
 const findById = (id) => User.findById(id);
 
-const findAll = () => User.findAll();
+const findAll = () => User.find();
+
+const updateService = (id,
+    name,
+    username,
+    email,
+    password,
+    avatar,
+    background
+) => 
+    User.findOneAndUpdate(
+        {_id: id},
+        { 
+           name,
+           username,
+           email,
+           password,
+           avatar,
+           background
+    });
 
 export default {
     create,
     findById,
-    findAll
-}
+    findAll,
+    updateService
+};

@@ -4,6 +4,7 @@ import express from 'express';
 import connectDatabase from './src/db/db.js';
 // importando as rotas
 import userRouter from './src/routers/user.router.js';
+import authRouter from './src/routers/auth.router.js';
 // importando o dotenv
 import dotenv from "dotenv";
 // criando constante app que recebe o express executando
@@ -20,6 +21,7 @@ connectDatabase();
 
 // configurando o app
 app.use("/user", userRouter);
+app.use("/auth", authRouter);
 
 const port = process.env.PORT || 3000;
 

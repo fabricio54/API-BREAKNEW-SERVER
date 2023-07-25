@@ -17,6 +17,7 @@ const validId = (req, res, next) => {
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).send();
 
         // logo após verificar passe para próxima função
+        req.id = id;
         next();
     } catch (error) {
         res.status(500).send({ message: error.message })

@@ -9,19 +9,19 @@ dotenv.config();
 export const authMiddleware = (req, res, next) => {
     try {
         // pegando o objeto passado nos headers
-        const { autorization } = req.headers;
+        const { authorization } = req.headers;
 
         // verificando se o usuário está autorizado a entrar. se não retorna o status http 401 de não autorizado
-        if(!autorization) {
-            return res.send(401);
+        if(!authorization) {
+            return res.status(401).send({message: "user not authorization"});
         }
 
         // desmembrando o autorization em um array com a função split do js
-        const parts = autorization.split(" ");
+        const parts = authorization.split(" ");
 
         // vericando se o arrays parts tem um tamanho de 2
-        if(parts.lenght !== 2) {
-            res.send(401);
+        if(parts.length !== 2) {
+            res.status(401).send({ message: "invalid lenght"});
         }
 
         // descontroindo esse array
@@ -38,9 +38,8 @@ export const authMiddleware = (req, res, next) => {
 
         jwt.verify(token, process.env.SECRET_JWT, async (error, decoded) => {
             if(error){
-                res.status(401).send({ message: "Token invalid" });
+                return res.status(401).send({ message: "Token invalid" });
             };
-
             // consultando se o id e válido
             const user = await userService.findById(decoded.id);
 
